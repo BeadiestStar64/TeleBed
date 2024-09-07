@@ -1,0 +1,4 @@
+name: TeleBed
+version: '1.0-SNAPSHOT'
+main: com.github.BeadiestStar64.Minecraft.Plugins.teleBed.TeleBed
+api-version: '1.20'

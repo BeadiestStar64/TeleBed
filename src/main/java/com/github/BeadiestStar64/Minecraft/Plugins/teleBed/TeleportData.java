@@ -14,6 +14,7 @@ public class TeleportData implements Serializable {
     private final int locationY;
     private final int locationZ;
     private final World.Environment environment;
+    private final String world;
     private final UUID uuid;
 
     public TeleportData(Player player) {
@@ -21,11 +22,24 @@ public class TeleportData implements Serializable {
         this.locationY = player.getLocation().getBlockY();
         this.locationZ = player.getLocation().getBlockZ();
         this.environment = player.getWorld().getEnvironment();
+
+        switch (environment) {
+            case NORMAL -> this.world = "world";
+            case NETHER -> this.world = "world_nether";
+            case THE_END -> this.world = "world_the_end";
+            case CUSTOM -> this.world = "custom";
+            default -> this.world = "none";
+        }
+
         this.uuid = player.getUniqueId();
     }
 
     public World.Environment getEnvironment() {
         return environment;
+    }
+
+    public String getWorld() {
+        return world;
     }
 
     public String getDimension() {
